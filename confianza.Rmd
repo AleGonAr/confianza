@@ -1,0 +1,92 @@
+---
+title: "Confianza en instituciones publicas"
+output: 
+  html_document:
+    highlight: espresso
+    number_sections: TRUE
+  bibliography: "input/bib/Confianza IP.bib"
+ link citation: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(cache=FALSE, # guarda renderizaciones parciales, ahorra tiempo
+                      warning = FALSE, # evita publicar advertencias
+                      message = FALSE) # evita publicar mensajes
+
+Sys.setlocale("LC_ALL","ES_ES.UTF-8")
+library(citr)
+library(knitr)
+```
+
+##Modelo de explicación de la Confianza en Instituciones político-sociales chilenas. 
+
+####Introducción
+
+El siguiente informe tiene por objetivo intentar explicar a partir de la elaboración de un modelo las valoraciones hacia las instituciones político-sociales en Chile. La explicación se realizó mediante un análisis de regresión lineal múltiple con el cual se testeó un modelo teórico con uno de contraste para analizar la capacidad explicativa de uno en comparación con el otro.
+Analizar la variación de esta variable se vuelve relevante al considerar la creciente politización de la población generada en parte por un movimiento social ascendente [@ruiz_nuevo_2015] que sin embargo presenta una irónica realidad reflejada en la encuesta de opinión pública UDP: pese al gran aumento de los movimientos sociales en la última década la confianza en instituciones del orden es relativamente alta, siendo carabineros la segunda con mayor confianza en esta encuesta, con sobre un 50% de aprobación. Al hablar de instituciones del orden se hace referencia específicamente a tres de las presentes en la encuesta, estas son las fuerzas armadas, carabineros y la iglesia católica. Se vuelve pertinente analizarlas por el alto poder de influencia directa sobre la vida de las personas, tanto coercitiva como ideológica. A la par que son estas las que han sido responsables de una constante criminalización y represión de la protesta social [@svampa_movimietos_2007]. No obstante, si la evaluación a las instituciones del orden se mantiene relativamente estable, la encuesta también nos muestra una creciente baja en la confianza otorgada hacia las instituciones políticas.
+
+Diversas investigaciones sugieren la inclusión de la variable orientación política como factor explicativo de la confianza a las instituciones debido a que se han encontrado pruebas empíricas [@segovia_confianza_2008] que sugieren una potente relación entre la orientación política de los sujetos y el gobierno de turno, es decir, “que el ser un "ganador" en el sistema político, es decir, ser una persona que votó por el partido o coalición gobernante, aumenta los niveles de confianza en las instituciones” [@segovia_confianza_2008]. Dicho esto, para esta investigación se espera que aquellos sujetos que se orienten en el centro tendrán mayor tendencia a confiar en las instituciones. No obstante, otras investigaciones [@morales_quiroga_evaluando_2008] afirman que la pertenencia a un sector político solamente influye en la explicación de la confianza solo en instituciones políticas, mientras que en el caso de carabineros, fuerzas armadas e iglesia católica no se ven afectadas.
+
+Por otro lado, existen estudios que dan cuenta de la relación causal entre la satisfacción con la democracia y la confianza en las instituciones políticas [@morales_quiroga_evaluando_2008; @pedroza_confianza_2004], lo que nos permite conjeturar que aquellos sujetos quienes tienen más satisfacción con la democracia son quienes, a la vez, tienen más confianza en las instituciones político-sociales, al estar en un grado de conformidad con su actual funcionamiento.
+
+En base a lo anteriormente expuesto, nuestro modelo teórico que explicaría la confianza en las instituciones en la población chilena sería de la siguiente manera:
+
+![Modelo1](input/images/Modelo1.jpg "Modelo Teórico")
+
+En el anterior, se queda de manifiesto que nuestra hipótesis alternativa es que mientras mayor satisfacción con la democracia, mayor será la confianza en las instituciones sociales, a la vez que al tener una orientación política más cercana a la derecha será también mayor la confianza institucional, y que, finalmente, mientras se arroje una mayor participación en las manifestaciones sociales significaría una menor confianza en las instituciones.
+
+A su vez, Morales @morales_quiroga_evaluando_2008 indica la relevancia de algunas variables sociodemográficas para explicar la variación de la confianza en las instituciones políticas, donde destacan los hallazgos encontrados en referencia la edad de la población y su incremento que va relacionado a una mayor valoración a casi todas las instituciones, siendo las instituciones del orden las más significativas. Por lo que se optó por introducir las variables mayores de 75 años y pertenecer al estrato socioeconómico ABC1 como variables de control para el modelo de contraste. Esta última relacionado con las distintas matrices culturales que configuran las clases altas de la sociedad respecto al resto y una supuesta conformidad respecto al modelo actual. De manera que nuestro modelo de contraste quedaría de la siguiente forma:
+
+![Modelo2](input/images/Modelo2.jpg "Modelo de contraste")
+
+
+
+####Método
+
+**Población y muestra**:
+Este trabajo se realizó con los datos levantados por el instituto de investigación en ciencias sociales (ICSO) de la universidad Diego Portales, mediante su “Encuesta nacional UDP 2015”, que consiste en una encuesta a nivel nacional de opinión pública. Esta fue realizada entre septiembre y octubre del mismo año, la población de estudio abarca a todos los mayores de 18 años que viven en 90 comunas urbanas del país, el alcance es de un 73% de la población chilena.  La muestra es multietápica, probabilística, por estratos, por conglomerado, con una selección al azar de las viviendas por conglomerado donde en cada vivienda se seleccionó una persona al azar de 18 años, esta incluyó un total de 1302 casos.
+
+Se creó un índice a partir de la sumatoria de algunos ítems de la variable 26 de la Encuesta de Opinión Pública UDP del año 2015, siendo este índice nuestra variable dependiente.
+
+**Variables**:
+Se trabajará con tres dos variables independientes, una variable dependiente y dos variables de control. La variable dependiente a trabajar es el índice creado a partir de la sumatoria de algunos ítems de la variable 26 “¿Cuánta confianza tiene usted en las instituciones que le voy a nombrar?”, con respuestas del 1 al 4, donde 1 significa nada de confianza y 4 mucha confianza. Se considerarán siete items, confianza en las fuerzas armadas, confianza en carabineros, confianza en la iglesia católica, confianza en el congreso, confianza en el gobierno, confianza en los partidos políticos y confianza en los tribunales de justicia. Este índice lleva por nombre “Confianza en instituciones públicas”. Se utilizó la sumatoria simple de estas respuestas para la conformación del índice, dándonos valores desde el 6 hasta el 24, donde valores cercanos al 6 representarán muy poca confianza en instituciones sociales y los valores más cercanos al 24 significarán mayor confianza en instituciones sociales. 
+
+Se trabajarán dos variables independientes correspondientes a “Satisfacción con la democracia en Chile” y “Participación en los últimos 12 meses en protestas”. La primera es tipo likert, con cuatro opciones de respuesta, desde muy satisfecho a nada satisfecho. 
+
+La segunda variable es participación en manifestaciones. Es una variable dummy creada a través de la agrupación de los valores de un índice creado a partir de las respuestas a la variable “participación en manifestaciones”, con el fin de medir la participación de los sujetos en distintos escenarios de manifestaciones sociales; “Participar de una manifestación”, “Adherir a un paro”, “Tomar un edificio” y “Bloquear calles y carreteras”.
+
+En el modelo de contraste se introducirán dos variables de control, corresponden a la edad y a la pertenencia a la clase social alta (ABC1). La edad será introducida en base a la variable sociodemográfica “edad entrevistado”. Por su parte, la variable “pertenencia a la clase alta” será analizada en base al GSE visual registrado en la encuesta, siendo ABC1 nuestra categoría de referencia.
+
+**Procedimiento**
+Para realizar el análisis y la comparación de los modelos se utilizará el procedimiento de regresión lineal múltiple que funciona en base al procedimiento de mínimos cuadrados ordinarios; es plausible utilizar este método, ya que nuestra variable dependiente corresponde a una variable cuantitativa con el rango suficiente (comprende valores desde 6 como mínimo y 24 como máximo), elaborada a partir de un índice unidimensional de la confianza en las instituciones políticas y sociales, el procedimiento se acomoda al tipo de investigación que llevamos a cabo y a las relaciones que queremos poner a prueba, es por esto que utilizaremos regresión lineal múltiple, permite medir el efecto de más de una variable independiente sobre una dependiente y comparar dos modelos diferentes con el fin de encontrar el que más explique,  y de esa forma poner a prueba las hipótesis antes señaladas.
+
+####Resultados
+
+En primer lugar se realiza un análisis bivariado de medias entre la variable dependiente y las variables independientes para asegurar que las medias de las variables independientes bivarían en relación con la dependiente.
+
+![](output/graphs/comparacion de medias mt.png "Confianza en instituciones públicas y participación en protestas")
+
+![](output/graphs/comparacion de medias mt2.png "Confianza en instituciones públicas y satisfacción con la democracia")
+
+Y luego realizamos lo mismo con las variables de control del modelo de contraste.
+
+![](output/graphs/comparacion de medias gsexconfip.png "Confianza en instituciones públicas y nivel socioeconómico")
+
+Para el caso de la variable edad, el análisis es distinto, porque corresponde a una variable cuantitativa,por lo que evaluaremos la variacion de las medias a través de un gráfico scatterplot.
+
+![](output/graphs/revision edadxconfip.png "Confianza en instituciones públicas y edad del entrevistdo")
+
+Los gráficos nos indican que si existe variación entre las variables del modelo, por lo que se procederá a realizar el analisis de regresión lineal múltiple.
+
+![](output/tables/modelo.png "Confianza en instituciones públicas y edad del entrevistdo")
+
+La gráfica nos indica que el modelo planteado para observar la variabilidad de la confianza en las instituciones públicas es malo, ya que solo tiene un R2 ajustado de 0.064. Si le agregamos las variables de control del modelo de contraste, este mejor, sin embargo, se queda en un valor de 0.071, lo cual sigue siendo muy bajo para ser un buen modelo, dado que explica muy poca variabilidad de nuestra variable dependiente.
+
+Los coeficientes beta nos indican que a medida que hay más participación en protestas, la confianza en las instituciones públicas disminuye en 1.58 puntos.
+
+Es curioso el resultado acerca de la relación entre la satisfacción con la democracia y la confianza en las instituciones públicas, ya que el coeficiente del modelo nos indica que a medida que sube la satisfación con la democracia, disminuye en 1.10 puntos la confianza en las instituciones públicas a contraposición de lo planteado por nuestra hipótesis, sin embargo, la varianza explicada total del modelo es muy baja, lo que impide sacar conclusiones al respecto.
+
+####Conclusiones
+
+El análisis realizado nos indica que existen algunas relaciones significativas para explicar la variabilidad de la confianza en las instituciones púbicas, como lo son la participación en protestas, la satisfacción con la democracia, la edad y la pertenencia al estrato socioeconómico D sin embargo, la varianza explicada por el modelo en su totalidad es muy baja, por lo que deben de existir meejores variables para explicar su variación. Esto último no va necesariamente en contra de nuestra hipótesis, ya que por ejemplo, la variable de particiación en protestas fue medida originalmente por la encuesta como una variable dummy en la que 1 era que si había participado y 2 que no, lo que hace que esta variable seauna mala variable para el análisis, ya que existía una sobrerrepresentación del valor 2. Por lo mismo para trabajar con la variable se transformó en un indice sumatorio a partir de varias respuestas a tipos de protestas y el resultado del indice se agrupó como una dummy en nuestro modelo con el fin de reducir la complejidad, pero habría sido mejor si esta variable hubiese sido medida como likert para ver grados de aprobación con distintas manifestaciones, lo que habría aumentado su variabilidad y posiblemente su capacidad explicativa de la confianza en las instituciones públicas en nuestro modelo.
+
